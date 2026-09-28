@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-color: #141414;
+    color: #e0e0e0;
+}
+
+header {
+    background-color: #1e1e1e;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ff6600;
+}
+
+.logo a {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ff6600;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+nav a {
+    color: #ccc;
+    text-decoration: none;
+    margin-left: 15px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #ff6600;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+.category {
+    background-color: #1e1e1e;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border: 1px solid #2d2d2d;
+    overflow: hidden;
+}
+
+.category-header {
+    background-color: #252525;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff6600;
+    border-bottom: 1px solid #333;
+}
+
+.forum-item {
+    padding: 15px 20px;
+    border-bottom: 1px solid #2a2a2a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forum-item a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.forum-item a:hover {
+    color: #ff6600;
+}
+
+.forum-desc {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+}
+
+.btn-primary {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-danger { background-color: #dc3545; color: white; border: none; padding: 4px 8px; border-radius: 3px; cursor: pointer; }
+.btn-warning { background-color: #ffc107; color: black; border: none; padding: 4px 8px; border-radius: 3px; cursor: pointer; }
+
+/* Блек Раша Префикстері */
+.badge {
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #fff;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.prefix-Игрок { background-color: #777; }
+.prefix-Мл-Модератор { background-color: #28a745; }
+.prefix-Модератор { background-color: #20c997; }
+.prefix-Ст-Модератор { background-color: #17a2b8; }
+.prefix-Администратор { background-color: #007bff; }
+.prefix-Ст-Администратор { background-color: #6610f2; }
+.prefix-ГС-ЗГС { background-color: #e83e8c; }
+.prefix-Куратор-Администраций { background-color: #fd7e14; }
+.prefix-Технический-Специалист { background-color: #ffc107; color: #000; }
+.prefix-Зам-Главного-Администратора { background-color: #dc3545; }
+.prefix-Главный-Администратор { background-color: #b21f2d; }
+.prefix-Зам-Основателя { background-color: #ff4500; }
+.prefix-Основатель { background-color: #ff0000; box-shadow: 0 0 5px #ff0000; }
+
+.status-open { background-color: #28a745; }
+.status-closed { background-color: #dc3545; }
+
+.topic-card {
+    background-color: #252525;
+    padding: 12px 15px;
+    border-radius: 4px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #aaa;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #121212;
+    border: 1px solid #333;
+    color: #fff;
+    border-radius: 4px;
+}

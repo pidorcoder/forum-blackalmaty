@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль - BLACK ALMATY</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="index.html">BLACK ALMATY</a></div>
+        <nav><a href="index.html">Басты бет</a></nav>
+    </header>
+
+    <div class="container">
+        <div class="category" style="padding: 20px;">
+            <div id="authSection">
+                <h2>Тіркелу / Кіру</h2>
+                <br>
+                <div class="form-group">
+                    <label>Никнейм:</label>
+                    <input type="text" id="regName" placeholder="Артем_Казахов">
+                </div>
+                <div class="form-group">
+                    <label>Код (міндетті емес):</label>
+                    <input type="text" id="regCode" placeholder="просто код">
+                </div>
+                <button class="btn-primary" onclick="submitReg()">Тіркелу</button>
+            </div>
+
+            <div id="profileSection" style="display:none;">
+                <h2>Пайдаланушы кабинеті</h2>
+                <br>
+                <p>Никнейм: <b id="profName"></b></p>
+                <p>Статус: <span id="profRole" class="badge"></span></p>
+                <br>
+                <button class="btn-danger" onclick="logout()">Шығу</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        const user = getCurrentUser();
+        if (user) {
+            document.getElementById('authSection').style.display = 'none';
+            document.getElementById('profileSection').style.display = 'block';
+            document.getElementById('profName').innerText = user.name;
+            
+            const badge = document.getElementById('profRole');
+            badge.innerText = user.role;
+            badge.className = 'badge prefix-' + user.role.replace(/[\s\.\/]/g, '-');
+        }
+
+        function submitReg() {
+            const name = document.getElementById('regName').value.trim();
+            const code = document.getElementById('regCode').value.trim();
+            if(!name) return alert('Ник жазыңыз!');
+            registerUser(name, code);
+        }
+    </script>
+</body>
+</html>

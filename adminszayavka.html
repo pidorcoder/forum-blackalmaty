@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Администрацияға заявка - BLACK ALMATY</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="index.html">BLACK ALMATY</a></div>
+        <nav><a href="index.html">Басты бет</a> | <a href="profil.html">Профиль</a></nav>
+    </header>
+
+    <div class="container">
+        <div class="category" style="padding: 20px;">
+            <h2>🛡️ Администрацияға заявка</h2>
+            <br>
+            <div id="createTopicBox" style="background:#1e1e1e; padding:15px; border-radius:5px; margin-bottom:20px;">
+                <div class="form-group">
+                    <input type="text" id="topicTitleInput" placeholder="Заявка на пост Хелпера от [Ваш Ник]...">
+                </div>
+                <button class="btn-primary" onclick="createTopicHere()">Заявка беру</button>
+            </div>
+
+            <hr style="border-color:#333;"><br>
+            <div id="topicsArea"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        const SECTION_NAME = "adminszayavka";
+        const user = getCurrentUser();
+
+        function createTopicHere() {
+            const title = document.getElementById('topicTitleInput').value.trim();
+            if(!title) return alert("Ақпаратты енгізіңіз!");
+            addTopic(SECTION_NAME, title, "Игрок");
+        }
+
+        function render() {
+            const container = document.getElementById('topicsArea');
+            const list = getTopics(SECTION_NAME);
+
+            if(list.length === 0) {
+                container.innerHTML = '<p style="color:#777; margin-top:10px;">Әлі заявкалар жоқ.</p>';
+                return;
+            }
+
+            list.forEach(t => {
+                const canClose = user && (ADMIN_HIERARCHY.includes(user.role) || user.isOwner);
+                const canDelete = user && user.isOwner;
+
+                let statusClass = t.status === 'Открыто' ? 'status-open' : 'status-closed';
+
+                let html = `
+                    <div class="topic-card">
+                        <div>
+                            <span class="badge ${statusClass}">${t.status}</span>
+                            <span class="badge prefix-${t.prefix.replace(/[\s\.\/]/g, '-')}">${t.prefix}</span>
+                            <b>${t.title}</b>
+                            <div style="font-size:11px; color:#888;">Авторы: ${t.author}</div>
+                        </div>
+                        <div>
+                `;
+
+                if (canClose && t.status === 'Открыто') {
+                    html += `<button class="btn-warning" onclick="closeTopic(${t.id})">Жабу</button> `;
+                }
+                if (canDelete) {
+                    html += `<button class="btn-danger" onclick="deleteTopic(${t.id})">Өшіру</button>`;
+                }
+
+                html += `</div></div>`;
+                container.innerHTML += html;
+            });
+        }
+
+        render();
+    </script>
+</body>
+</html>
